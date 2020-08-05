@@ -21,13 +21,15 @@ describe('test/worker-thread.test.js', () => {
     let time = Date.now();
     function calculate() {
       // eslint-disable-next-line no-empty
-      for (let i = 0; i < 2000000000; i++) {}
+      for (let i = 0; i < 1000000000; i++) {
+        i * (i - 1);
+      }
     }
 
     await Promise.all([
       calculate(),
       calculate(),
-      calculate() ]);
+      calculate(), calculate() ]);
 
     const spendTime = Date.now() - time;
 
@@ -35,8 +37,9 @@ describe('test/worker-thread.test.js', () => {
     await Promise.all([
       easyWorkerThread.createWorkerThread(calculate),
       easyWorkerThread.createWorkerThread(calculate),
+      easyWorkerThread.createWorkerThread(calculate),
       easyWorkerThread.createWorkerThread(calculate) ]);
 
-    assert(spendTime / 2 > Date.now() - time);
+    assert(spendTime / 3 > Date.now() - time);
   });
 });

@@ -1,7 +1,7 @@
 {
   "name": "egg-worker-thread",
   "version": "1.0.0",
-  "description": "",
+  "description": "More convenient to use worker thread for egg",
   "eggPlugin": {
     "name": "workerThread"
   },
@@ -36,6 +36,7 @@
     "autod": "autod"
   },
   "files": [
+    "extend",
     "config",
     "app.js"
   ],
