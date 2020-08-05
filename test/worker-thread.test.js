@@ -40,6 +40,6 @@ describe('test/worker-thread.test.js', () => {
       easyWorkerThread.createWorkerThread(calculate),
       easyWorkerThread.createWorkerThread(calculate) ]);
 
-    assert(spendTime / 3 > Date.now() - time);
+    assert(spendTime / 2 > Date.now() - time);
   });
 });
